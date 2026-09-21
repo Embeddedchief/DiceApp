@@ -29,14 +29,13 @@ void main() {
 //The statefull widget
 class DicePage extends StatefulWidget {
   const new({super.key});
-
   @override
   State<DicePage> createState() => _DicePageState();
 }
 
 class _DicePageState extends State<DicePage> {
   // variable to hold the dice value
-  int leftDiceNumber = 6;
+  int leftDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -49,7 +48,9 @@ class _DicePageState extends State<DicePage> {
                 padding: const EdgeInsets.all(16.0),
                 child: TextButton(
                   onPressed: () {
-                    print('left button got pressed');
+                    setState(() {
+                      leftDiceNumber = 5;
+                    });
                   },
                   child: Image(
                     image: AssetImage("images/dice$leftDiceNumber.png"),
