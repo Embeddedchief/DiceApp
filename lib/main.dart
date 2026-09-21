@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'dart:math';
 
 void main() {
@@ -25,12 +26,19 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+//The statefull widget
+class DicePage extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  // variable to hold the dice value
+  int leftDiceNumber = 6;
   @override
   Widget build(BuildContext context) {
-    // variable to hold the dice value
-    var leftDiceNumber = 6;
-
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
