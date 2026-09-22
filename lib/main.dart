@@ -1,12 +1,19 @@
+//this import material dart library
 import 'package:flutter/material.dart';
 
+//this allows us to use random numbers
 import 'dart:math';
 
+//The app runs from here
 void main() {
   return runApp(
     MaterialApp(
+      //this turns off the debugbanner from the screen
       debugShowCheckedModeBanner: false,
+
+      //this is the parent widget that holds everything in the screen
       home: Scaffold(
+        //this sets the background of the app
         backgroundColor: Colors.deepPurple,
         appBar: AppBar(
           title: Center(
@@ -35,7 +42,8 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   // variable to hold the dice value
-  int leftDiceNumber = 1;
+  int leftDiceNumber = 0;
+  int rightDiceNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -49,7 +57,7 @@ class _DicePageState extends State<DicePage> {
                 child: TextButton(
                   onPressed: () {
                     setState(() {
-                      leftDiceNumber = 5;
+                      leftDiceNumber = Random().nextInt(6) + 1;
                     });
                   },
                   child: Image(
@@ -63,9 +71,13 @@ class _DicePageState extends State<DicePage> {
                 padding: const EdgeInsets.all(16.0),
                 child: TextButton(
                   onPressed: () {
-                    print("Right button got pressed");
+                    setState(() {
+                      rightDiceNumber = Random().nextInt(6) + 1;
+                    });
                   },
-                  child: Image(image: AssetImage("images/dice2.png")),
+                  child: Image(
+                    image: AssetImage("images/dice$rightDiceNumber.png"),
+                  ),
                 ),
               ),
             ),
